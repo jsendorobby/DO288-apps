@@ -5,12 +5,11 @@ pipeline {
     }
     agent {
       node {
-	label 'maven'
+        label 'maven'
       }
     }
 
     environment {
-        //TODO: Customize these variables for your environment
         DEV_PROJECT = "jsendoro-bbyc-movies-dev"
         STAGE_PROJECT = "jsendoro-bbyc-movies-stage"
         APP_GIT_URL = "https://github.com/jsendorobby/DO288-apps"
@@ -89,6 +88,7 @@ pipeline {
         }
 
         stage('Wait for deployment in DEV env') {
+            steps {
                 script {
                     openshift.withCluster() {
                         openshift.withProject( "${DEV_PROJECT}" ) {
@@ -98,7 +98,7 @@ pipeline {
                         }
                     }
                 }
-	    }
+            }
         }
 
         stage('Promote to Staging Env') {
@@ -108,7 +108,6 @@ pipeline {
                 }
                 script {
                     openshift.withCluster() {
-                    //Tag the ${APP_NAME}:latest image stream in the dev env as ${APP_NAME}:stage in staging
                     openshift.tag("${DEV_PROJECT}/${APP_NAME}:latest", "${STAGE_PROJECT}/${APP_NAME}:stage")
                     }
                 }
