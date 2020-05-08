@@ -1,0 +1,130 @@
+{
+    "apiVersion": "v1",
+    "kind": "Pod",
+    "metadata": {
+        "annotations": {
+            "k8s.v1.cni.cncf.io/networks-status": "[{\n    \"name\": \"openshift-sdn\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.130.7.137\"\n    ],\n    \"default\": true,\n    \"dns\": {}\n}]",
+            "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu, memory request for container myapp; cpu, memory limit for container myapp",
+            "openshift.io/deployment-config.latest-version": "1",
+            "openshift.io/deployment-config.name": "myapp",
+            "openshift.io/deployment.name": "myapp-1",
+            "openshift.io/generated-by": "OpenShiftNewApp",
+            "openshift.io/scc": "restricted"
+        },
+        "creationTimestamp": null,
+        "generateName": "myapp-1-",
+        "labels": {
+            "app": "myapp",
+            "deployment": "myapp-1",
+            "deploymentconfig": "myapp"
+        },
+        "ownerReferences": [
+            {
+                "apiVersion": "v1",
+                "blockOwnerDeletion": true,
+                "controller": true,
+                "kind": "ReplicationController",
+                "name": "myapp-1",
+                "uid": "0923a041-9178-11ea-b380-02e5d704b7db"
+            }
+        ],
+        "selfLink": "/api/v1/namespaces/jsendoro-bbyc-app-config/pods/myapp-1-rvjcs"
+    },
+    "spec": {
+        "containers": [
+            {
+                "image": "image-registry.openshift-image-registry.svc:5000/jsendoro-bbyc-app-config/myapp@sha256:87ac6d4ac660ae175101f5b64bcbb74a858a3cf6dc1807eeef8531b5d69bc7a3",
+                "imagePullPolicy": "Always",
+                "name": "myapp",
+                "ports": [
+                    {
+                        "containerPort": 8080,
+                        "protocol": "TCP"
+                    }
+                ],
+                "resources": {
+                    "limits": {
+                        "cpu": "500m",
+                        "memory": "1536Mi"
+                    },
+                    "requests": {
+                        "cpu": "5m",
+                        "memory": "50Mi"
+                    }
+                },
+                "securityContext": {
+                    "capabilities": {
+                        "drop": [
+                            "KILL",
+                            "MKNOD",
+                            "SETGID",
+                            "SETUID"
+                        ]
+                    },
+                    "runAsUser": 1064130000
+                },
+                "terminationMessagePath": "/dev/termination-log",
+                "terminationMessagePolicy": "File",
+                "volumeMounts": [
+                    {
+                        "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                        "name": "default-token-wbbng",
+                        "readOnly": true
+                    }
+                ]
+            }
+        ],
+        "dnsPolicy": "ClusterFirst",
+        "enableServiceLinks": true,
+        "imagePullSecrets": [
+            {
+                "name": "default-dockercfg-q6444"
+            }
+        ],
+        "nodeName": "ip-10-0-182-238.ec2.internal",
+        "priority": 0,
+        "restartPolicy": "Always",
+        "schedulerName": "default-scheduler",
+        "securityContext": {
+            "fsGroup": 1064130000,
+            "seLinuxOptions": {
+                "level": "s0:c253,c187"
+            }
+        },
+        "serviceAccount": "default",
+        "serviceAccountName": "default",
+        "terminationGracePeriodSeconds": 30,
+        "tolerations": [
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/unreachable",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            },
+            {
+                "effect": "NoSchedule",
+                "key": "node.kubernetes.io/memory-pressure",
+                "operator": "Exists"
+            },
+            {
+                "effect": "NoExecute",
+                "key": "node.kubernetes.io/not-ready",
+                "operator": "Exists",
+                "tolerationSeconds": 300
+            }
+        ],
+        "volumes": [
+            {
+                "name": "default-token-wbbng",
+                "secret": {
+                    "defaultMode": 420,
+                    "secretName": "default-token-wbbng"
+                }
+            }
+        ]
+    },
+    "status": {
+        "phase": "Pending",
+        "qosClass": "Burstable"
+    }
+}

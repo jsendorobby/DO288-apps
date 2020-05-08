@@ -1,0 +1,47 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: joshua
+  name: joshua
+  selfLink: /apis/build.openshift.io/v1/namespaces/jsendoro-bbyc-app-config/buildconfigs/joshua
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: joshua:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: php-helloworld
+    git:
+      ref: master
+      uri: https://github.com/jsendorobby/DO288-apps
+    type: Git
+  strategy:
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: php:7.0
+        namespace: openshift
+    type: Source
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: CBPlHZNgmuOLYWuTtgmF
+    type: GitHub
+  - generic:
+      secret: 4e-96o5UOv7nzpZV-5DF
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+      lastTriggeredImageID: image-registry.openshift-image-registry.svc:5000/openshift/php@sha256:5fe71824f8cd33e087a8345dae0d50d246d3032b179ccfbc21a2d2aaea24e2dc
+    type: ImageChange
+status:
+  lastVersion: 1

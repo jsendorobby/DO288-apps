@@ -1,0 +1,79 @@
+{
+    "apiVersion": "build.openshift.io/v1",
+    "kind": "BuildConfig",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": null,
+        "labels": {
+            "app": "myapp"
+        },
+        "name": "myapp",
+        "selfLink": "/apis/build.openshift.io/v1/namespaces/jsendoro-bbyc-app-config/buildconfigs/myapp"
+    },
+    "spec": {
+        "failedBuildsHistoryLimit": 5,
+        "nodeSelector": null,
+        "output": {
+            "to": {
+                "kind": "ImageStreamTag",
+                "name": "myapp:latest"
+            }
+        },
+        "postCommit": {},
+        "resources": {},
+        "runPolicy": "Serial",
+        "source": {
+            "contextDir": "app-config",
+            "git": {
+                "ref": "app-config",
+                "uri": "https://github.com/jsendorobby/DO288-apps"
+            },
+            "type": "Git"
+        },
+        "strategy": {
+            "sourceStrategy": {
+                "env": [
+                    {
+                        "name": "npm_config_registry",
+                        "value": "http://nexus-common.apps.ocp-na2.prod.nextcle.com/repository/nodejs"
+                    }
+                ],
+                "from": {
+                    "kind": "ImageStreamTag",
+                    "name": "nodejs:10",
+                    "namespace": "openshift"
+                }
+            },
+            "type": "Source"
+        },
+        "successfulBuildsHistoryLimit": 5,
+        "triggers": [
+            {
+                "github": {
+                    "secret": "SDSEQkIrl584TH0fr5e2"
+                },
+                "type": "GitHub"
+            },
+            {
+                "generic": {
+                    "secret": "hdseSPwRae5nj1ERjoi3"
+                },
+                "type": "Generic"
+            },
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "imageChange": {
+                    "lastTriggeredImageID": "image-registry.openshift-image-registry.svc:5000/openshift/nodejs@sha256:74a3ef2964efc03dfc239da3f09691b720ce54ff4bb47588864adb222133f0fc"
+                },
+                "type": "ImageChange"
+            }
+        ]
+    },
+    "status": {
+        "lastVersion": 1
+    }
+}
