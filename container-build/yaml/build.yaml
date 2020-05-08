@@ -1,0 +1,49 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: "2020-05-08T05:01:23Z"
+  labels:
+    app: hola
+  name: hola
+  namespace: jsendoro-bbyc-container-build
+  resourceVersion: "47338629"
+  selfLink: /apis/build.openshift.io/v1/namespaces/jsendoro-bbyc-container-build/buildconfigs/hola
+  uid: f6f13414-90e8-11ea-87eb-0a580a800041
+spec:
+  failedBuildsHistoryLimit: 5
+  nodeSelector: null
+  output:
+    to:
+      kind: ImageStreamTag
+      name: hola:latest
+  postCommit: {}
+  resources: {}
+  runPolicy: Serial
+  source:
+    contextDir: container-build
+    git:
+      ref: container-build-2
+      uri: https://github.com/jsendorobby/DO288-apps
+    type: Git
+  strategy:
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: httpd-parent:latest
+    type: Docker
+  successfulBuildsHistoryLimit: 5
+  triggers:
+  - github:
+      secret: gBgxBcI6eDPfvOr_fiYN
+    type: GitHub
+  - generic:
+      secret: uy19de5U5KpsaucLgYEm
+    type: Generic
+  - type: ConfigChange
+  - imageChange:
+      lastTriggeredImageID: quay.io/redhattraining/httpd-parent@sha256:998847647613fa38fd6641953a4a3a8dd5a986211988a5f99f29ba47d3308895
+    type: ImageChange
+status:
+  lastVersion: 2

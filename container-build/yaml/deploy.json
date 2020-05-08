@@ -1,0 +1,134 @@
+{
+    "apiVersion": "apps.openshift.io/v1",
+    "kind": "DeploymentConfig",
+    "metadata": {
+        "annotations": {
+            "openshift.io/generated-by": "OpenShiftNewApp"
+        },
+        "creationTimestamp": "2020-05-08T05:01:23Z",
+        "generation": 3,
+        "labels": {
+            "app": "hola"
+        },
+        "name": "hola",
+        "namespace": "jsendoro-bbyc-container-build",
+        "resourceVersion": "47344874",
+        "selfLink": "/apis/apps.openshift.io/v1/namespaces/jsendoro-bbyc-container-build/deploymentconfigs/hola",
+        "uid": "f6f805f1-90e8-11ea-b279-0a580a810037"
+    },
+    "spec": {
+        "replicas": 1,
+        "revisionHistoryLimit": 10,
+        "selector": {
+            "app": "hola",
+            "deploymentconfig": "hola"
+        },
+        "strategy": {
+            "activeDeadlineSeconds": 21600,
+            "resources": {},
+            "rollingParams": {
+                "intervalSeconds": 1,
+                "maxSurge": "25%",
+                "maxUnavailable": "25%",
+                "timeoutSeconds": 600,
+                "updatePeriodSeconds": 1
+            },
+            "type": "Rolling"
+        },
+        "template": {
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": null,
+                "labels": {
+                    "app": "hola",
+                    "deploymentconfig": "hola"
+                }
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "image": "image-registry.openshift-image-registry.svc:5000/jsendoro-bbyc-container-build/hola@sha256:3e8497878f979858ce6ad998376040924817a252edb79fb1f8ab18e3096fc309",
+                        "imagePullPolicy": "Always",
+                        "name": "hola",
+                        "ports": [
+                            {
+                                "containerPort": 80,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {},
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File"
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {},
+                "terminationGracePeriodSeconds": 30
+            }
+        },
+        "test": false,
+        "triggers": [
+            {
+                "type": "ConfigChange"
+            },
+            {
+                "imageChangeParams": {
+                    "automatic": true,
+                    "containerNames": [
+                        "hola"
+                    ],
+                    "from": {
+                        "kind": "ImageStreamTag",
+                        "name": "hola:latest",
+                        "namespace": "jsendoro-bbyc-container-build"
+                    },
+                    "lastTriggeredImage": "image-registry.openshift-image-registry.svc:5000/jsendoro-bbyc-container-build/hola@sha256:3e8497878f979858ce6ad998376040924817a252edb79fb1f8ab18e3096fc309"
+                },
+                "type": "ImageChange"
+            }
+        ]
+    },
+    "status": {
+        "availableReplicas": 0,
+        "conditions": [
+            {
+                "lastTransitionTime": "2020-05-08T05:11:51Z",
+                "lastUpdateTime": "2020-05-08T05:12:46Z",
+                "message": "replication controller \"hola-2\" successfully rolled out",
+                "reason": "NewReplicationControllerAvailable",
+                "status": "True",
+                "type": "Progressing"
+            },
+            {
+                "lastTransitionTime": "2020-05-08T05:22:48Z",
+                "lastUpdateTime": "2020-05-08T05:22:48Z",
+                "message": "Deployment config does not have minimum availability.",
+                "status": "False",
+                "type": "Available"
+            }
+        ],
+        "details": {
+            "causes": [
+                {
+                    "imageTrigger": {
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "image-registry.openshift-image-registry.svc:5000/jsendoro-bbyc-container-build/hola@sha256:3e8497878f979858ce6ad998376040924817a252edb79fb1f8ab18e3096fc309"
+                        }
+                    },
+                    "type": "ImageChange"
+                }
+            ],
+            "message": "image change"
+        },
+        "latestVersion": 2,
+        "observedGeneration": 3,
+        "replicas": 1,
+        "unavailableReplicas": 1,
+        "updatedReplicas": 1
+    }
+}
