@@ -1,0 +1,741 @@
+{
+    "apiVersion": "v1",
+    "items": [
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "",
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu, memory request for container deployment; cpu, memory limit for container deployment",
+                    "openshift.io/deployment-config.name": "tododb",
+                    "openshift.io/deployment.name": "tododb-1",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-05-08T17:53:18Z",
+                "labels": {
+                    "openshift.io/deployer-pod-for.name": "tododb-1"
+                },
+                "name": "tododb-1-deploy",
+                "namespace": "jsendoro-bbyc-review-service",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "kind": "ReplicationController",
+                        "name": "tododb-1",
+                        "uid": "cc9190f7-9154-11ea-b380-02e5d704b7db"
+                    }
+                ],
+                "resourceVersion": "47744054",
+                "selfLink": "/api/v1/namespaces/jsendoro-bbyc-review-service/pods/tododb-1-deploy",
+                "uid": "cca1843c-9154-11ea-b380-02e5d704b7db"
+            },
+            "spec": {
+                "activeDeadlineSeconds": 21600,
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAME",
+                                "value": "tododb-1"
+                            },
+                            {
+                                "name": "OPENSHIFT_DEPLOYMENT_NAMESPACE",
+                                "value": "jsendoro-bbyc-review-service"
+                            }
+                        ],
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:29e8526c0a87b83638cf664b363733f79bc042043917ab3a93cc8c1caa3351e4",
+                        "imagePullPolicy": "IfNotPresent",
+                        "name": "deployment",
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "1536Mi"
+                            },
+                            "requests": {
+                                "cpu": "5m",
+                                "memory": "50Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1061380000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "deployer-token-hgrg6",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "deployer-dockercfg-qfmv5"
+                    }
+                ],
+                "nodeName": "ip-10-0-171-136.ec2.internal",
+                "priority": 0,
+                "restartPolicy": "Never",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1061380000,
+                    "seLinuxOptions": {
+                        "level": "s0:c248,c62"
+                    }
+                },
+                "serviceAccount": "deployer",
+                "serviceAccountName": "deployer",
+                "shareProcessNamespace": false,
+                "terminationGracePeriodSeconds": 10,
+                "tolerations": [
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "deployer-token-hgrg6",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "deployer-token-hgrg6"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:18Z",
+                        "reason": "PodCompleted",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:38Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:38Z",
+                        "reason": "PodCompleted",
+                        "status": "False",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:18Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://47f46efcac9a32dd1ea7f951596314247fc93dd4d6553243c4cc4d2cb78a95ae",
+                        "image": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:29e8526c0a87b83638cf664b363733f79bc042043917ab3a93cc8c1caa3351e4",
+                        "imageID": "quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:29e8526c0a87b83638cf664b363733f79bc042043917ab3a93cc8c1caa3351e4",
+                        "lastState": {},
+                        "name": "deployment",
+                        "ready": false,
+                        "restartCount": 0,
+                        "state": {
+                            "terminated": {
+                                "containerID": "cri-o://47f46efcac9a32dd1ea7f951596314247fc93dd4d6553243c4cc4d2cb78a95ae",
+                                "exitCode": 0,
+                                "finishedAt": "2020-05-08T17:53:38Z",
+                                "reason": "Completed",
+                                "startedAt": "2020-05-08T17:53:26Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.0.171.136",
+                "phase": "Succeeded",
+                "podIP": "10.129.8.162",
+                "qosClass": "Burstable",
+                "startTime": "2020-05-08T17:53:18Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Pod",
+            "metadata": {
+                "annotations": {
+                    "k8s.v1.cni.cncf.io/networks-status": "[{\n    \"name\": \"openshift-sdn\",\n    \"interface\": \"eth0\",\n    \"ips\": [\n        \"10.131.13.242\"\n    ],\n    \"default\": true,\n    \"dns\": {}\n}]",
+                    "kubernetes.io/limit-ranger": "LimitRanger plugin set: cpu, memory request for container tododb; cpu, memory limit for container tododb",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "tododb",
+                    "openshift.io/deployment.name": "tododb-1",
+                    "openshift.io/generated-by": "OpenShiftNewApp",
+                    "openshift.io/scc": "restricted"
+                },
+                "creationTimestamp": "2020-05-08T17:53:27Z",
+                "generateName": "tododb-1-",
+                "labels": {
+                    "app": "tododb",
+                    "deployment": "tododb-1",
+                    "deploymentconfig": "tododb"
+                },
+                "name": "tododb-1-qwxhg",
+                "namespace": "jsendoro-bbyc-review-service",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "ReplicationController",
+                        "name": "tododb-1",
+                        "uid": "cc9190f7-9154-11ea-b380-02e5d704b7db"
+                    }
+                ],
+                "resourceVersion": "47744047",
+                "selfLink": "/api/v1/namespaces/jsendoro-bbyc-review-service/pods/tododb-1-qwxhg",
+                "uid": "d1dbb754-9154-11ea-b027-0e18b0a4b171"
+            },
+            "spec": {
+                "containers": [
+                    {
+                        "env": [
+                            {
+                                "name": "MYSQL_DATABASE",
+                                "value": "todo"
+                            },
+                            {
+                                "name": "MYSQL_PASSWORD",
+                                "value": "mypass"
+                            },
+                            {
+                                "name": "MYSQL_USER",
+                                "value": "todoapp"
+                            }
+                        ],
+                        "image": "registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe",
+                        "imagePullPolicy": "Always",
+                        "name": "tododb",
+                        "ports": [
+                            {
+                                "containerPort": 3306,
+                                "protocol": "TCP"
+                            }
+                        ],
+                        "resources": {
+                            "limits": {
+                                "cpu": "500m",
+                                "memory": "1536Mi"
+                            },
+                            "requests": {
+                                "cpu": "5m",
+                                "memory": "50Mi"
+                            }
+                        },
+                        "securityContext": {
+                            "capabilities": {
+                                "drop": [
+                                    "KILL",
+                                    "MKNOD",
+                                    "SETGID",
+                                    "SETUID"
+                                ]
+                            },
+                            "runAsUser": 1061380000
+                        },
+                        "terminationMessagePath": "/dev/termination-log",
+                        "terminationMessagePolicy": "File",
+                        "volumeMounts": [
+                            {
+                                "mountPath": "/var/run/secrets/kubernetes.io/serviceaccount",
+                                "name": "default-token-6kfxf",
+                                "readOnly": true
+                            }
+                        ]
+                    }
+                ],
+                "dnsPolicy": "ClusterFirst",
+                "enableServiceLinks": true,
+                "imagePullSecrets": [
+                    {
+                        "name": "default-dockercfg-kkqqf"
+                    }
+                ],
+                "nodeName": "ip-10-0-218-137.ec2.internal",
+                "priority": 0,
+                "restartPolicy": "Always",
+                "schedulerName": "default-scheduler",
+                "securityContext": {
+                    "fsGroup": 1061380000,
+                    "seLinuxOptions": {
+                        "level": "s0:c248,c62"
+                    }
+                },
+                "serviceAccount": "default",
+                "serviceAccountName": "default",
+                "terminationGracePeriodSeconds": 30,
+                "tolerations": [
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/unreachable",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    },
+                    {
+                        "effect": "NoSchedule",
+                        "key": "node.kubernetes.io/memory-pressure",
+                        "operator": "Exists"
+                    },
+                    {
+                        "effect": "NoExecute",
+                        "key": "node.kubernetes.io/not-ready",
+                        "operator": "Exists",
+                        "tolerationSeconds": 300
+                    }
+                ],
+                "volumes": [
+                    {
+                        "name": "default-token-6kfxf",
+                        "secret": {
+                            "defaultMode": 420,
+                            "secretName": "default-token-6kfxf"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "conditions": [
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:27Z",
+                        "status": "True",
+                        "type": "Initialized"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:38Z",
+                        "status": "True",
+                        "type": "Ready"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:38Z",
+                        "status": "True",
+                        "type": "ContainersReady"
+                    },
+                    {
+                        "lastProbeTime": null,
+                        "lastTransitionTime": "2020-05-08T17:53:27Z",
+                        "status": "True",
+                        "type": "PodScheduled"
+                    }
+                ],
+                "containerStatuses": [
+                    {
+                        "containerID": "cri-o://623d30445ba43f4b63297decb732b4cc936e33a5ff7b68c168c8ee3745df42b6",
+                        "image": "image-registry.openshift-image-registry.svc:5000/openshift/mysql@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe",
+                        "imageID": "image-registry.openshift-image-registry.svc:5000/openshift/mysql@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe",
+                        "lastState": {},
+                        "name": "tododb",
+                        "ready": true,
+                        "restartCount": 0,
+                        "state": {
+                            "running": {
+                                "startedAt": "2020-05-08T17:53:37Z"
+                            }
+                        }
+                    }
+                ],
+                "hostIP": "10.0.218.137",
+                "phase": "Running",
+                "podIP": "10.131.13.242",
+                "qosClass": "Burstable",
+                "startTime": "2020-05-08T17:53:27Z"
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "ReplicationController",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/deployer-pod.completed-at": "2020-05-08 17:53:38 +0000 UTC",
+                    "openshift.io/deployer-pod.created-at": "2020-05-08 17:53:18 +0000 UTC",
+                    "openshift.io/deployer-pod.name": "tododb-1-deploy",
+                    "openshift.io/deployment-config.latest-version": "1",
+                    "openshift.io/deployment-config.name": "tododb",
+                    "openshift.io/deployment.phase": "Complete",
+                    "openshift.io/deployment.replicas": "1",
+                    "openshift.io/deployment.status-reason": "config change",
+                    "openshift.io/encoded-deployment-config": "{\"kind\":\"DeploymentConfig\",\"apiVersion\":\"apps.openshift.io/v1\",\"metadata\":{\"name\":\"tododb\",\"namespace\":\"jsendoro-bbyc-review-service\",\"selfLink\":\"/apis/apps.openshift.io/v1/namespaces/jsendoro-bbyc-review-service/deploymentconfigs/tododb\",\"uid\":\"cbc4278a-9154-11ea-87eb-0a580a800041\",\"resourceVersion\":\"47743810\",\"generation\":2,\"creationTimestamp\":\"2020-05-08T17:53:17Z\",\"labels\":{\"app\":\"tododb\"},\"annotations\":{\"openshift.io/generated-by\":\"OpenShiftNewApp\"}},\"spec\":{\"strategy\":{\"type\":\"Rolling\",\"rollingParams\":{\"updatePeriodSeconds\":1,\"intervalSeconds\":1,\"timeoutSeconds\":600,\"maxUnavailable\":\"25%\",\"maxSurge\":\"25%\"},\"resources\":{},\"activeDeadlineSeconds\":21600},\"triggers\":[{\"type\":\"ConfigChange\"},{\"type\":\"ImageChange\",\"imageChangeParams\":{\"automatic\":true,\"containerNames\":[\"tododb\"],\"from\":{\"kind\":\"ImageStreamTag\",\"namespace\":\"jsendoro-bbyc-review-service\",\"name\":\"tododb:latest\"},\"lastTriggeredImage\":\"registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe\"}}],\"replicas\":1,\"revisionHistoryLimit\":10,\"test\":false,\"selector\":{\"app\":\"tododb\",\"deploymentconfig\":\"tododb\"},\"template\":{\"metadata\":{\"creationTimestamp\":null,\"labels\":{\"app\":\"tododb\",\"deploymentconfig\":\"tododb\"},\"annotations\":{\"openshift.io/generated-by\":\"OpenShiftNewApp\"}},\"spec\":{\"containers\":[{\"name\":\"tododb\",\"image\":\"registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe\",\"ports\":[{\"containerPort\":3306,\"protocol\":\"TCP\"}],\"env\":[{\"name\":\"MYSQL_DATABASE\",\"value\":\"todo\"},{\"name\":\"MYSQL_PASSWORD\",\"value\":\"mypass\"},{\"name\":\"MYSQL_USER\",\"value\":\"todoapp\"}],\"resources\":{},\"terminationMessagePath\":\"/dev/termination-log\",\"terminationMessagePolicy\":\"File\",\"imagePullPolicy\":\"Always\"}],\"restartPolicy\":\"Always\",\"terminationGracePeriodSeconds\":30,\"dnsPolicy\":\"ClusterFirst\",\"securityContext\":{},\"schedulerName\":\"default-scheduler\"}}},\"status\":{\"latestVersion\":1,\"observedGeneration\":1,\"replicas\":0,\"updatedReplicas\":0,\"availableReplicas\":0,\"unavailableReplicas\":0,\"details\":{\"message\":\"config change\",\"causes\":[{\"type\":\"ConfigChange\"}]},\"conditions\":[{\"type\":\"Available\",\"status\":\"False\",\"lastUpdateTime\":\"2020-05-08T17:53:17Z\",\"lastTransitionTime\":\"2020-05-08T17:53:17Z\",\"message\":\"Deployment config does not have minimum availability.\"}]}}\n"
+                },
+                "creationTimestamp": "2020-05-08T17:53:18Z",
+                "generation": 2,
+                "labels": {
+                    "app": "tododb",
+                    "openshift.io/deployment-config.name": "tododb"
+                },
+                "name": "tododb-1",
+                "namespace": "jsendoro-bbyc-review-service",
+                "ownerReferences": [
+                    {
+                        "apiVersion": "apps.openshift.io/v1",
+                        "blockOwnerDeletion": true,
+                        "controller": true,
+                        "kind": "DeploymentConfig",
+                        "name": "tododb",
+                        "uid": "cbc4278a-9154-11ea-87eb-0a580a800041"
+                    }
+                ],
+                "resourceVersion": "47744053",
+                "selfLink": "/api/v1/namespaces/jsendoro-bbyc-review-service/replicationcontrollers/tododb-1",
+                "uid": "cc9190f7-9154-11ea-b380-02e5d704b7db"
+            },
+            "spec": {
+                "replicas": 1,
+                "selector": {
+                    "app": "tododb",
+                    "deployment": "tododb-1",
+                    "deploymentconfig": "tododb"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/deployment-config.latest-version": "1",
+                            "openshift.io/deployment-config.name": "tododb",
+                            "openshift.io/deployment.name": "tododb-1",
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "tododb",
+                            "deployment": "tododb-1",
+                            "deploymentconfig": "tododb"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "MYSQL_DATABASE",
+                                        "value": "todo"
+                                    },
+                                    {
+                                        "name": "MYSQL_PASSWORD",
+                                        "value": "mypass"
+                                    },
+                                    {
+                                        "name": "MYSQL_USER",
+                                        "value": "todoapp"
+                                    }
+                                ],
+                                "image": "registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe",
+                                "imagePullPolicy": "Always",
+                                "name": "tododb",
+                                "ports": [
+                                    {
+                                        "containerPort": 3306,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                }
+            },
+            "status": {
+                "availableReplicas": 1,
+                "fullyLabeledReplicas": 1,
+                "observedGeneration": 2,
+                "readyReplicas": 1,
+                "replicas": 1
+            }
+        },
+        {
+            "apiVersion": "v1",
+            "kind": "Service",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-05-08T17:53:17Z",
+                "labels": {
+                    "app": "tododb"
+                },
+                "name": "tododb",
+                "namespace": "jsendoro-bbyc-review-service",
+                "resourceVersion": "47743794",
+                "selfLink": "/api/v1/namespaces/jsendoro-bbyc-review-service/services/tododb",
+                "uid": "cbce7b86-9154-11ea-8219-12f1c648b1b9"
+            },
+            "spec": {
+                "clusterIP": "172.30.41.84",
+                "ports": [
+                    {
+                        "name": "3306-tcp",
+                        "port": 3306,
+                        "protocol": "TCP",
+                        "targetPort": 3306
+                    }
+                ],
+                "selector": {
+                    "app": "tododb",
+                    "deploymentconfig": "tododb"
+                },
+                "sessionAffinity": "None",
+                "type": "ClusterIP"
+            },
+            "status": {
+                "loadBalancer": {}
+            }
+        },
+        {
+            "apiVersion": "apps.openshift.io/v1",
+            "kind": "DeploymentConfig",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp"
+                },
+                "creationTimestamp": "2020-05-08T17:53:17Z",
+                "generation": 5,
+                "labels": {
+                    "app": "tododb"
+                },
+                "name": "tododb",
+                "namespace": "jsendoro-bbyc-review-service",
+                "resourceVersion": "47755555",
+                "selfLink": "/apis/apps.openshift.io/v1/namespaces/jsendoro-bbyc-review-service/deploymentconfigs/tododb",
+                "uid": "cbc4278a-9154-11ea-87eb-0a580a800041"
+            },
+            "spec": {
+                "replicas": 1,
+                "revisionHistoryLimit": 10,
+                "selector": {
+                    "app": "tododb",
+                    "deploymentconfig": "tododb"
+                },
+                "strategy": {
+                    "activeDeadlineSeconds": 21600,
+                    "resources": {},
+                    "rollingParams": {
+                        "intervalSeconds": 1,
+                        "maxSurge": "25%",
+                        "maxUnavailable": "25%",
+                        "timeoutSeconds": 600,
+                        "updatePeriodSeconds": 1
+                    },
+                    "type": "Rolling"
+                },
+                "template": {
+                    "metadata": {
+                        "annotations": {
+                            "openshift.io/generated-by": "OpenShiftNewApp"
+                        },
+                        "creationTimestamp": null,
+                        "labels": {
+                            "app": "tododb",
+                            "deploymentconfig": "tododb"
+                        }
+                    },
+                    "spec": {
+                        "containers": [
+                            {
+                                "env": [
+                                    {
+                                        "name": "MYSQL_DATABASE",
+                                        "value": "todo"
+                                    },
+                                    {
+                                        "name": "MYSQL_PASSWORD",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "password",
+                                                "name": "tododb"
+                                            }
+                                        }
+                                    },
+                                    {
+                                        "name": "MYSQL_USER",
+                                        "valueFrom": {
+                                            "secretKeyRef": {
+                                                "key": "user",
+                                                "name": "tododb"
+                                            }
+                                        }
+                                    }
+                                ],
+                                "image": "registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe",
+                                "imagePullPolicy": "Always",
+                                "name": "tododb",
+                                "ports": [
+                                    {
+                                        "containerPort": 3306,
+                                        "protocol": "TCP"
+                                    }
+                                ],
+                                "resources": {},
+                                "terminationMessagePath": "/dev/termination-log",
+                                "terminationMessagePolicy": "File"
+                            }
+                        ],
+                        "dnsPolicy": "ClusterFirst",
+                        "restartPolicy": "Always",
+                        "schedulerName": "default-scheduler",
+                        "securityContext": {},
+                        "terminationGracePeriodSeconds": 30
+                    }
+                },
+                "test": false,
+                "triggers": [
+                    {
+                        "imageChangeParams": {
+                            "automatic": true,
+                            "containerNames": [
+                                "tododb"
+                            ],
+                            "from": {
+                                "kind": "ImageStreamTag",
+                                "name": "tododb:latest",
+                                "namespace": "jsendoro-bbyc-review-service"
+                            },
+                            "lastTriggeredImage": "registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe"
+                        },
+                        "type": "ImageChange"
+                    }
+                ]
+            },
+            "status": {
+                "availableReplicas": 1,
+                "conditions": [
+                    {
+                        "lastTransitionTime": "2020-05-08T17:53:38Z",
+                        "lastUpdateTime": "2020-05-08T17:53:38Z",
+                        "message": "Deployment config has minimum availability.",
+                        "status": "True",
+                        "type": "Available"
+                    },
+                    {
+                        "lastTransitionTime": "2020-05-08T17:53:27Z",
+                        "lastUpdateTime": "2020-05-08T17:53:39Z",
+                        "message": "replication controller \"tododb-1\" successfully rolled out",
+                        "reason": "NewReplicationControllerAvailable",
+                        "status": "True",
+                        "type": "Progressing"
+                    }
+                ],
+                "details": {
+                    "causes": [
+                        {
+                            "type": "ConfigChange"
+                        }
+                    ],
+                    "message": "config change"
+                },
+                "latestVersion": 1,
+                "observedGeneration": 5,
+                "readyReplicas": 1,
+                "replicas": 1,
+                "unavailableReplicas": 0,
+                "updatedReplicas": 1
+            }
+        },
+        {
+            "apiVersion": "image.openshift.io/v1",
+            "kind": "ImageStream",
+            "metadata": {
+                "annotations": {
+                    "openshift.io/generated-by": "OpenShiftNewApp",
+                    "openshift.io/image.dockerRepositoryCheck": "2020-05-08T17:53:17Z"
+                },
+                "creationTimestamp": "2020-05-08T17:53:16Z",
+                "generation": 2,
+                "labels": {
+                    "app": "tododb"
+                },
+                "name": "tododb",
+                "namespace": "jsendoro-bbyc-review-service",
+                "resourceVersion": "47743805",
+                "selfLink": "/apis/image.openshift.io/v1/namespaces/jsendoro-bbyc-review-service/imagestreams/tododb",
+                "uid": "cbbe4a06-9154-11ea-9257-0a580a82000a"
+            },
+            "spec": {
+                "lookupPolicy": {
+                    "local": false
+                },
+                "tags": [
+                    {
+                        "annotations": {
+                            "openshift.io/imported-from": "registry.access.redhat.com/rhscl/mysql-57-rhel7"
+                        },
+                        "from": {
+                            "kind": "DockerImage",
+                            "name": "registry.access.redhat.com/rhscl/mysql-57-rhel7"
+                        },
+                        "generation": 2,
+                        "importPolicy": {},
+                        "name": "latest",
+                        "referencePolicy": {
+                            "type": "Source"
+                        }
+                    }
+                ]
+            },
+            "status": {
+                "dockerImageRepository": "image-registry.openshift-image-registry.svc:5000/jsendoro-bbyc-review-service/tododb",
+                "publicDockerImageRepository": "default-route-openshift-image-registry.apps.ocp-na2.prod.nextcle.com/jsendoro-bbyc-review-service/tododb",
+                "tags": [
+                    {
+                        "items": [
+                            {
+                                "created": "2020-05-08T17:53:17Z",
+                                "dockerImageReference": "registry.access.redhat.com/rhscl/mysql-57-rhel7@sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe",
+                                "generation": 2,
+                                "image": "sha256:9a781abe7581cc141e14a7e404ec34125b3e89c008b14f4e7b41e094fd3049fe"
+                            }
+                        ],
+                        "tag": "latest"
+                    }
+                ]
+            }
+        }
+    ],
+    "kind": "List",
+    "metadata": {
+        "resourceVersion": "",
+        "selfLink": ""
+    }
+}
